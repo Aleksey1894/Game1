@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Allow specific NuGet packages
+!packages/MSTest.TestAdapter.2.2.7/
+!packages/MSTest.TestFramework.2.2.7/
