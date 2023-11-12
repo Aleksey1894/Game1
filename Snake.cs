@@ -14,7 +14,7 @@ namespace Game1
         private Direction direction;        
         private Dot tail;
         private Dot head;
-        bool rotate = true;
+        
         public Snake(int x, int y, int length)
         {
             direction = Direction.RIGHT;
@@ -36,8 +36,7 @@ namespace Game1
             snake.Dequeue();
             tail.Clear();
             head.Draw();
-            rotate = true;
-
+            
         }
 
         public bool Eat(Dot d)
@@ -73,26 +72,25 @@ namespace Game1
         }
         public void Rotation(ConsoleKey key)
         {
-            if (rotate)
+            
+            switch (key)
             {
-                switch (direction)
-                {
-                    case Direction.LEFT:
-                    case Direction.RIGHT:
-                        if (key == ConsoleKey.DownArrow)
-                            direction = Direction.DOWN;
-                        else if (key == ConsoleKey.UpArrow)
-                            direction = Direction.UP;
-                        break;
-                    case Direction.UP:
-                    case Direction.DOWN:
-                        if (key == ConsoleKey.LeftArrow)
-                            direction = Direction.LEFT;
-                        else if (key == ConsoleKey.RightArrow)
-                            direction = Direction.RIGHT;
-                        break;
-                }
-                rotate = false;
+                case ConsoleKey.LeftArrow:
+                    if (direction != Direction.RIGHT)
+                        direction = Direction.LEFT;
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (direction != Direction.LEFT)
+                        direction = Direction.RIGHT;
+                    break;
+                case ConsoleKey.UpArrow:
+                    if (direction != Direction.DOWN)
+                        direction = Direction.UP;
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (direction != Direction.UP)
+                        direction = Direction.DOWN;
+                    break;
             }
         }
         public bool IsHit(Dot d)
