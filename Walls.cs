@@ -38,13 +38,11 @@ namespace Game1
 
         public virtual bool IsHit(Dot d)
         {
-            foreach (var w in wall)
+            foreach (var _ in wall.Where(w => d == w).Select(w => new { }))
             {
-                if (d == w)
-                {
-                    return true;
-                }
+                return true;
             }
+
             return false;
         }
     }

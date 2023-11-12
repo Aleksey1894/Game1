@@ -93,15 +93,14 @@ namespace Game1
                     break;
             }
         }
+        
         public bool IsHit(Dot d)
         {
-            for (int i = snake.Count - 2; i > 0; i--)
+            foreach (var _ in snake.SkipLast(1).Where(dot => dot == d).Select(dot => new { }))
             {
-                if (snake.ElementAt(i) == d)
-                {
-                    return true;
-                }
+                return true;
             }
+
             return false;
         }
     }
